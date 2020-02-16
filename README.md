@@ -17,6 +17,7 @@ As Requested by Liberty University's Center for Financial Literacy, the aim of t
 
 * NodeJS
 * VueJS (Nuxt.js Framework)
+* Bulma.css
 * Nginx
 * VS Code
 
