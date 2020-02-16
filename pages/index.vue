@@ -9,7 +9,7 @@
         Center for Financial Literacy Tools
       </h2>
       <div class="links">
-        <nuxt-link to="/loans"
+        <nuxt-link to="/loans" style="margin-bottom: 24px;"
           class="button--green"
         >
           Student Loan Calculator
@@ -17,7 +17,7 @@
         <a
           href="mailto:grplyler@liberty.edu"
           target="_blank"
-          class="button--grey"
+          class="button--grey" style="margin-bottom: 24px;"
         >
           Contact
         </a>
@@ -36,9 +36,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .mycontainer {
   margin: 0 auto;
+  padding: 24px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
