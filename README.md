@@ -2,6 +2,7 @@
 
 > Liberty Center for Financial Literacy Tools
 
+As Requested by Liberty University's Center for Financial Literacy, this is project to develop a simple collection of web-based financial tools for educational purposes.
 
 
 ## Requirements
