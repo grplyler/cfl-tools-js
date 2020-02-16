@@ -214,9 +214,18 @@ export default {
 </script>
 
 <style>
+
 .main {
   padding: 100px;
 }
+
+@media (max-width: 592px) {
+  .main {
+    padding: 25px;
+  }
+} 
+
+
 /* .container {
   margin: 0 auto;
   min-height: 100vh;
