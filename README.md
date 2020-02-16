@@ -13,6 +13,13 @@ As Requested by Liberty University's Center for Financial Literacy, the aim of t
 * npm
 * Visial Studio Code (or other IDE)
 
+## Made with
+
+* NodeJS
+* VueJS (Nuxt.js Framework)
+* Nginx
+* VS Code
+
 ## Build Setup
 
 ``` bash
