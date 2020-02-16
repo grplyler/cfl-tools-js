@@ -4,6 +4,7 @@
 
 As Requested by Liberty University's Center for Financial Literacy, the aim of this project is to develop a collection of simple  web-based financial tools for use by the center's mentors and mentees for educational purposes.
 
+![Home page](index.png)
 
 ## Requirements
 
