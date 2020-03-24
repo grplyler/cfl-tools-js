@@ -2,13 +2,13 @@
   <div class="mycontainer">
     <div>
       <logo />
-      <h1 class="title">
+      <!-- <h1 class="title">
         CFL Tools
       </h1>
       <h2 class="subtitle">
         Center for Financial Literacy Tools
-      </h2>
-      <div class="links">
+      </h2> -->
+      <div class="links" style="margin-top: 25px;">
         <nuxt-link to="/loans" style="margin-bottom: 24px;"
           class="button--green"
         >

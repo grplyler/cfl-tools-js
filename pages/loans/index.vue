@@ -1,17 +1,21 @@
 <template>
   <div class="main">
     <div class="container">
+      <div class="columns"></div>
+
       <div class="columns">
         <div class="column">
           <logo />
-
-          <h1 class="title">Loan Calculator</h1>
-
-          <nuxt-link to="/" class="button is-medium is-light">Back</nuxt-link>
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <nuxt-link
+                to="/"
+                class="button is-medium is-light center"
+                style="margin-top: 25px; "
+              >Back</nuxt-link>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="columns">
         <div class="column">
           <div class="card">
             <header class="card-header">
@@ -214,7 +218,6 @@ export default {
 </script>
 
 <style>
-
 .main {
   padding: 100px;
 }
@@ -223,8 +226,7 @@ export default {
   .main {
     padding: 25px;
   }
-} 
-
+}
 
 /* .container {
   margin: 0 auto;
@@ -237,27 +239,29 @@ export default {
 
 @media (min-width: 592px) {
   .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+    font-family: "Quicksand", "Source Sans Pro", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      sans-serif;
+    display: block;
+    font-weight: 300;
+    font-size: 100px;
+    color: #35495e;
+    letter-spacing: 1px;
   }
 }
 
 @media (max-width: 592px) {
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 60px;
-  color: #35495e;
-  letter-spacing: 1px;
+  .title {
+    font-family: "Quicksand", "Source Sans Pro", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      sans-serif;
+    display: block;
+    font-weight: 300;
+    font-size: 60px;
+    color: #35495e;
+    letter-spacing: 1px;
+  }
 }
-} 
 
 .subtitle {
   font-weight: 300;
