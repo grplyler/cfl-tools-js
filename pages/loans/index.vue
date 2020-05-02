@@ -7,12 +7,30 @@
         <div class="column">
           <logo />
           <div class="columns is-centered">
-            <div class="column is-half">
+            <div class="column is-full">
               <nuxt-link
                 to="/"
                 class="button is-medium is-light center"
                 style="margin-top: 25px; "
               >Back</nuxt-link>
+
+              <!-- <div class="card" style="margin-top: 25px;">
+                <div class="card-header">
+                  <p class="card-header-title">Formulas</p>
+                </div>
+                <div class="card-content">
+                  <em>Desired Payoff Periods</em>
+                  <div
+                    v-katex:display="'n = \\frac{\\ln\\bigg[\\Big( 1 - \\frac{PV(r)}{P}\\Big)^{-1}\\bigg]}{\\ln(1+r)}'"
+                  ></div>
+                  <em>
+                    Desired Monthly Payment
+                    <div
+                      v-katex:display="'n = \\frac{\\ln\\bigg[\\Big( 1 - \\frac{PV(r)}{P}\\Big)^{-1}\\bigg]}{\\ln(1+r)}'"
+                    ></div>
+                  </em>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -70,9 +88,19 @@
                   will be required to pay off the loan in {{ period_years }} years.
                 </div>
               </div>
+
+              <div v-if="showFormulas">
+                <em>Desired Payoff Periods</em>
+                <div
+                  v-katex:display="'n = \\frac{\\ln\\bigg[\\Big( 1 - \\frac{PV(r)}{P}\\Big)^{-1}\\bigg]}{\\ln(1+r)}'"
+                ></div>
+              </div>
             </div>
             <footer class="card-footer">
-              <a href="#" class="card-footer-item">Explain</a>
+              <a href="#" class="card-footer-item" @click="showFormulas = !showFormulas">
+                <span v-if="showFormulas">Hide Formulas</span>
+                <span v-else>Show Forumlas</span>
+              </a>
             </footer>
           </div>
         </div>
@@ -146,9 +174,20 @@
                   </u>
                 </div>
               </div>
+
+              <div v-if="showFormulas">
+                <em>Desired Monthly Payment</em>
+                <div
+                  v-katex:display="'A = \\frac{r(PV)}{1-(1+r)^{-n}}'"
+                ></div>
+              </div>
+
             </div>
             <footer class="card-footer">
-              <a href="#" class="card-footer-item">Explain</a>
+              <a href="#" class="card-footer-item" @click="showFormulas = !showFormulas">
+                <span v-if="showFormulas">Hide Formulas</span>
+                <span v-else>Show Forumlas</span>
+              </a>
             </footer>
           </div>
         </div>
@@ -159,6 +198,16 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
+import "katex/dist/katex.min.css";
+
+import Vue from "vue";
+import VueKatex from "vue-katex";
+
+Vue.use(VueKatex, {
+  globalOptions: {
+    //... Define globally applied KaTeX options here
+  }
+});
 
 export default {
   components: {
@@ -166,6 +215,7 @@ export default {
   },
   data() {
     return {
+      showFormulas: false,
       showResultDesiredPayment: true,
       showResultDesiredPeriod: false,
       show_explain_periods: false,
@@ -180,6 +230,7 @@ export default {
       period_result: 0
     };
   },
+  mounted() {},
   methods: {
     calculate_desired_pmt() {
       console.log("Calculating Desired Payment");

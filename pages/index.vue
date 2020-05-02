@@ -7,33 +7,37 @@
       </h1>
       <h2 class="subtitle">
         Center for Financial Literacy Tools
-      </h2> -->
+      </h2>-->
       <div class="links" style="margin-top: 25px;">
-        <nuxt-link to="/loans" style="margin-bottom: 24px;"
-          class="button--green"
-        >
-          Student Loan Calculator
-        </nuxt-link>
+        <nuxt-link
+          to="/life"
+          style="margin-bottom: 24px;"
+          class="button--grey"
+        >Life Calculator</nuxt-link>
+        <nuxt-link
+          to="/loans"
+          style="margin-bottom: 24px;"
+          class="button--grey"
+        >Student Loan Calculator</nuxt-link>
         <a
           href="mailto:grplyler@liberty.edu"
           target="_blank"
-          class="button--grey" style="margin-bottom: 24px;"
-        >
-          Contact
-        </a>
+          class="button--grey"
+          style="margin-bottom: 24px;"
+        >Contact</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
     Logo
   }
-}
+};
 </script>
 
 <style scoped>
@@ -48,8 +52,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
