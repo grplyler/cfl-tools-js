@@ -201,11 +201,6 @@ import Logo from "~/components/Logo.vue";
 
 import Vue from "vue";
 
-Vue.use(VueKatex, {
-  globalOptions: {
-    //... Define globally applied KaTeX options here
-  }
-});
 
 export default {
   components: {
