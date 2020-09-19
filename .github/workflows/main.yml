@@ -33,7 +33,7 @@ jobs:
         run: npm install
       
       # Nuxt build
-      - name: NuxtBuild
+      - name: Nuxt Build
         run: npm run generate
         
       # Deploy to server
