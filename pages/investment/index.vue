@@ -146,7 +146,7 @@
                     class="delete"
                   ></button>
                   <b>Results:</b>
-                  In {{ end_age - start_age }} years, a monthly payment of ${{ monthly }}
+                  In {{ end_age - start_age }} years, a monthly investment of ${{ monthly }}
                   would grow to
                   <b>
                     <u>${{ growth }}</u>
