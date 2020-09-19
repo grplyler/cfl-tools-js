@@ -8,8 +8,6 @@ on:
   workflow_dispatch:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -31,10 +29,24 @@ jobs:
           node-version: '14.x'
           
       # Install Dependancies
-      - run: npm install
+      - name: Install Dependancies
+        run: npm install
       
-      # Nuxt Build
-      - run: npm run generate
+      # Nuxt build
+      - name: NuxtBuild
+        run: npm run generate
+        
+      # Deploy to server
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+            ARGS: "-rltgoDzvO --delete"
+            SOURCE: "dist/"
+            REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+            REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+            REMOTE_USER: ${{ secrets.REMOTE_USER }}
+            TARGET: ${{ secrets.REMOTE_TARGET }}
         
       
          
