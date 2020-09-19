@@ -4,7 +4,7 @@
       <div class="columns"></div>
 
       <div class="columns">
-        <div class="column">
+        <div class="column is-4">
           <logo />
           <div class="columns is-centered">
             <div class="column is-half">
@@ -16,7 +16,7 @@
             </div>
           </div>
         </div>
-        <div class="column">
+        <div class="column is-6">
           <div class="card">
             <header class="card-header">
               <p class="card-header-title">Retirement Investment Calculator</p>
@@ -28,123 +28,129 @@
             </header>
             <div class="card-content">
               <div class="content" style="text-align: left;">
-                <div class="field">
-                  <label class="label">Age to Start Investing</label>
-                  <div class="control">
-                    <input v-model="period_pv" class="input" type="text" />
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Age to Start Investing</label>
+                      <div class="control">
+                        <input v-model="start_age" class="input" type="text" />
+                      </div>
+                      <div>
+                        <small>Enter a whole number or use slider</small>
+                        <br />
+                        <div class="range-slider">
+                          <div class="badge">18</div>
+                          <input
+                            v-model="start_age"
+                            type="range"
+                            min="18"
+                            max="100"
+                            value="50"
+                            class="slider myslider"
+                            id="myRange"
+                          />
+                          <div class="badge">100</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <small>Enter a whole number</small>
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Age to Retire</label>
+                      <div class="control">
+                        <input v-model="end_age" class="input" type="text" />
+                      </div>
+                      <small>Enter a whole number</small>
+                      <div class="range-slider">
+                        <div class="badge">18</div>
+                        <input
+                          v-model="end_age"
+                          type="range"
+                          min="18"
+                          max="100"
+                          value="50"
+                          class="slider myslider"
+                          id="myRange"
+                        />
+                        <div class="badge">100</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="field">
-                  <label class="label">Age to Retire</label>
-                  <div class="control">
-                    <input v-model="period_interest" class="input" type="text" />
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Monlthy Contribution</label>
+                      <div class="control">
+                        <input v-model="monthly" class="input" type="text" />
+                      </div>
+                      <small>Contribution in Dollars</small>
+                      <div class="range-slider">
+                        <div class="badge">
+                          <small>10</small>
+                        </div>
+                        <input
+                          v-model="monthly"
+                          type="range"
+                          min="10"
+                          max="2000"
+                          value="50"
+                          class="slider myslider"
+                          id="myRange"
+                        />
+                        <div class="badge">
+                          <small>2000</small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <small>Enter a whole number</small>
-                </div>
-
-                <div class="field">
-                  <label class="label">Monlthy Contribution</label>
-                  <div class="control">
-                    <input v-model="period_years" class="input" type="text" />
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Interest Rate</label>
+                      <div class="control">
+                        <input v-model="interest" class="input" type="text" />
+                      </div>
+                      <small>Percent</small>
+                      <div class="range-slider">
+                        <div class="badge">
+                          <small>0</small>
+                        </div>
+                        <input
+                          v-model="interest"
+                          type="range"
+                          min="0"
+                          step="0.005"
+                          max="0.20"
+                          value="50"
+                          class="slider myslider"
+                          id="myRange"
+                        />
+                        <div class="badge">
+                          <small>0.20</small>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <small>Contribution ammount in Dollars</small>
                 </div>
 
                 <div class="field is-grouped">
                   <div class="control">
-                    <button @click="calculate_desired_periods()" class="button is-link">Calculate</button>
+                    <button @click="calulate_retirement_investment()" class="button is-link">Calculate</button>
                   </div>
                 </div>
 
-                <div v-if="showResultDesiredPeriod" class="notification is-light">
+                <div v-if="showResult" class="notification is-light">
                   <button
-                    @click="showResultDesiredPeriod = !showResultDesiredPeriod"
+                    @click="showResult = !showResult"
                     class="delete"
                   ></button>
                   <b>Results:</b>
-                  A monthly payment of
+                  In {{ end_age - start_age }} years, a monthly payment of ${{ monthly }}
+                  would grow to
                   <b>
-                    <u>${{ period_result.toFixed(2) }}</u>
-                  </b>
-                  will be required to pay off the loan in {{ period_years }} years.
-                </div>
-              </div>
-            </div>
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Explain</a>
-            </footer>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">Desired Monthly Payment</p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content" style="text-align: left;">
-                <div class="field">
-                  <label class="label">Principle Value (PV)</label>
-                  <div class="control">
-                    <input
-                      v-model="payment_pv"
-                      class="input"
-                      type="text"
-                      placeholder="12000"
-                      value="12000"
-                    />
-                  </div>
-                  <small>Current value of the loan</small>
-                </div>
-
-                <div class="field">
-                  <label class="label">Interest Rate (r)</label>
-                  <div class="control">
-                    <input
-                      v-model="payment_interest"
-                      class="input"
-                      type="text"
-                      placeholder="0.05"
-                      value="0.05"
-                    />
-                  </div>
-                  <small>Annual Interest Rate</small>
-                </div>
-
-                <div class="field">
-                  <label class="label">Desired Payment (P)</label>
-                  <div class="control">
-                    <input
-                      v-model="payment_payment"
-                      class="input"
-                      type="text"
-                      placeholder="220"
-                      value="220"
-                    />
-                  </div>
-                </div>
-
-                <div class="field is-grouped">
-                  <div class="control">
-                    <button @click="calculate_desired_pmt()" class="button is-link">Calculate</button>
-                  </div>
-                </div>
-
-                <div v-if="showResultDesiredPayment" class="notification is-light">
-                  <button
-                    @click="showResultDesiredPayment = !showResultDesiredPayment"
-                    class="delete"
-                  ></button>
-                  <b>Results:</b> Loan will be payed off in
-                  <u>
-                    <b>{{ payment_result.toFixed(2) }} months or {{ (payment_result / 12).toFixed(2) }} years.</b>
-                  </u>
+                    <u>${{ growth }}</u>
+                  </b> at a {{ (interest * 100).toFixed(2) }}% interest rate.
                 </div>
               </div>
             </div>
@@ -163,39 +169,48 @@ import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
-    Logo
+    Logo,
   },
   data() {
     return {
-      showResultDesiredPayment: true,
-      showResultDesiredPeriod: false,
-      show_explain_periods: false,
-      show_explain_payment: false,
-      monthly: 0.0,
+
+      monthly: 120,
       start_age: 30,
-      end_age: 65,
-      payment_pv: 10000.0,
-      payment_interest: 0.05,
-      payment_payment: 100.0,
-      payment_result: 0.0,
-      period_pv: 10000.0,
-      period_interest: 0.05,
-      period_years: 10,
-      period_result: 0
+      end_age: 60,
+      interest: 0.04,
+      years: 0,
+      result: 0.0,
+      showResult: false,
+
     };
   },
-  methods: {
-
-    calulate_retirement_investment() {
+  computed: {
+    growth() {
       var PMT = this.monthly;
-      var i = 0.10 / 12
-      var n = 30 * 12
+      var i = this.interest / 12;
+      var n = (this.end_age - this.start_age) * 12;
 
       // Formula for monthly retirement investment
-      var FVA = PMT * (((Math.pow(1 + i, n)) - 1) / i)
-      console.log(FVA)
+      var FVA = PMT * ((Math.pow(1 + i, n) - 1) / i);
+      this.result = FVA;
+      console.log(FVA);
+      this.years = this.end_age - this.start_age
+      this.showResult = true;
+      return this.result.toFixed(2);
+    }
+  },
+  methods: {
+    calulate_retirement_investment() {
+      var PMT = this.monthly;
+      var i = this.interest / 12;
+      var n = (this.end_age - this.start_age) * 12;
 
-
+      // Formula for monthly retirement investment
+      var FVA = PMT * ((Math.pow(1 + i, n) - 1) / i);
+      this.result = FVA;
+      console.log(FVA);
+      this.years = this.end_age - this.start_age
+      this.showResult = true;
     },
 
     calculate_desired_pmt() {
@@ -235,6 +250,28 @@ export default {
 </script>
 
 <style>
+.range-wrapper {
+  padding: 0px 8px 0px 8px;
+}
+.range-slider {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 8px;
+  margin-top: 2px;
+}
+
+.myslider {
+  width: 100%;
+  /* padding-left: 8px;
+  padding-right: 8px; */
+}
+
+.badge {
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+  background-color: whitesmoke;
+}
+
 .main {
   padding: 100px;
 }
