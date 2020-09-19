@@ -13,7 +13,7 @@
           to="/investment"
           style="margin-bottom: 24px;"
           class="button--grey"
-        >Investment Calculator</nuxt-link>
+        >Investment Calculator <span class="new is-success"><small>new!</small></span></nuxt-link>
         <nuxt-link
           to="/loans"
           style="margin-bottom: 24px;"
@@ -41,6 +41,14 @@ export default {
 </script>
 
 <style scoped>
+
+.new {
+  padding: 0px 6px 2px 6px;
+  border-radius: 4px;
+  background-color: hsl(204, 86%, 53%);
+  color: #fff;
+}
+
 .mycontainer {
   margin: 0 auto;
   padding: 24px;
