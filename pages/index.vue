@@ -9,18 +9,22 @@
         Center for Financial Literacy Tools
       </h2> -->
       <div class="links" style="margin-top: 25px;">
-        <nuxt-link to="/loans" style="margin-bottom: 24px;"
-          class="button--green"
-        >
-          Student Loan Calculator
-        </nuxt-link>
+        <nuxt-link
+          to="/investment"
+          style="margin-bottom: 24px;"
+          class="button--grey"
+        >Investment Calculator</nuxt-link>
+        <nuxt-link
+          to="/loans"
+          style="margin-bottom: 24px;"
+          class="button--grey"
+        >Student Loan Calculator</nuxt-link>
         <a
           href="mailto:grplyler@liberty.edu"
           target="_blank"
-          class="button--grey" style="margin-bottom: 24px;"
-        >
-          Contact
-        </a>
+          class="button--grey"
+          style="margin-bottom: 24px;"
+        >Contact</a>
       </div>
     </div>
   </div>
